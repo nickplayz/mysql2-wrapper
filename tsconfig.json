@@ -1,0 +1,21 @@
+{
+    "exclude": ["node_modules", "dist"],
+    "compilerOptions": {
+        "skipLibCheck": false,
+        "target": "es6",
+        "module": "es6",
+        "moduleResolution": "node",
+        "typeRoots": ["./node_modules/@types", "./node_modules/@altv"],
+        "rootDir": "./src",
+        "outDir": "dist",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "importHelpers": true,
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "allowSyntheticDefaultImports": true,
+    },
+    "include": [
+        "./src"
+    ]
+}
