@@ -34,7 +34,7 @@ mysql_debug: 'true'
 To import oxmysql to your alt:V resource just use
 
 ```sh
-import oxmysql from 'oxmysql' 
+import oxmysql from 'altv-oxmysql' 
 ```
 
 ## Usage
@@ -61,5 +61,5 @@ You can also use the following syntax when you are uncertain about the column to
 ```
 instead of using  
 ```sh
-"SELECT "..column.." FROM users WHERE identifier = ?", {identifier}
+"SELECT "+column+" FROM users WHERE identifier = ?", {identifier}
 ```
