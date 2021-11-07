@@ -2,6 +2,7 @@ import { pool } from './pool';
 import * as alt from 'alt-server';
 import { executeQuery } from './execute';
 import { queryType } from './utils';
+import { debug } from './config';
 
 (async () => {
     try{
@@ -16,7 +17,7 @@ const safeCallback = (callback, result, resource, query) => {
     if (typeof callback === 'function'){
       return callback(result);
     }
-    // else if (debug)
+    else if (debug)
       return console.log(`[WARNING] ${resource} executed a query, but no callback function was defined!\n
       ${query}`);
 };
