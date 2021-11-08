@@ -3,6 +3,7 @@ import * as alt from 'alt-server';
 import { executeQuery } from './execute';
 import { queryType } from './utils';
 import { debug } from './config';
+import altCallback from './interfaces/altCallback';
 
 (async () => {
     try{
@@ -13,7 +14,7 @@ import { debug } from './config';
     }
 })()
 
-const safeCallback = (callback, result, resource, query) => {
+const safeCallback = (callback: altCallback | unknown, result: unknown, resource: string, query: string): altCallback | void => {
     if (typeof callback === 'function'){
       return callback(result);
     }
@@ -22,7 +23,7 @@ const safeCallback = (callback, result, resource, query) => {
       ${query}`);
 };
 
-const execute = async (query: string, parameters: unknown, cb: Function, resource: string) => {
+const execute = async (query: string, parameters: unknown, cb: altCallback, resource: string): Promise<altCallback | void> => {
     if(!alt.hasResource(resource)){
         throw new Error(`Invoked by invalid resource`)
     }
@@ -30,7 +31,7 @@ const execute = async (query: string, parameters: unknown, cb: Function, resourc
     return safeCallback(cb || parameters, result, resource, query);
 }
 
-const insert = async (query: string, parameters: unknown, cb: Function, resource: string) => { 
+const insert = async (query: string, parameters: unknown, cb: altCallback, resource: string): Promise<altCallback | void> => { 
     if(!alt.hasResource(resource)){
         throw new Error(`Invoked by invalid resource`)
     }
@@ -42,7 +43,7 @@ const insert = async (query: string, parameters: unknown, cb: Function, resource
     safeCallback(cb || parameters, result && result.insertId, resource, query);
 }
 
-const update = async (query: string, parameters: unknown, cb: Function, resource: string) => { 
+const update = async (query: string, parameters: unknown, cb: altCallback, resource: string): Promise<altCallback | void> => { 
     if(!alt.hasResource(resource)){
         throw new Error(`Invoked by invalid resource`)
     }
@@ -54,7 +55,7 @@ const update = async (query: string, parameters: unknown, cb: Function, resource
     safeCallback(cb || parameters, result && result.affectedRows, resource, query);
 }
 
-const scalar = async (query: string, parameters: unknown, cb: Function, resource: string) => { 
+const scalar = async (query: string, parameters: unknown, cb: altCallback, resource: string): Promise<altCallback | void> => { 
     if(!alt.hasResource(resource)){
         throw new Error(`Invoked by invalid resource`)
     }

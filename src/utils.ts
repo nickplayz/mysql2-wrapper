@@ -3,7 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 //  Workaround to get variables directly from server.cfg
-const getConvar = (convar: string, initialValue: string) => {
+const getConvar = (convar: string, initialValue: string): string => {
     const serverCfg = fs.readFileSync(path.join(alt.rootDir, 'server.cfg'), 'utf8')
     const cfg = serverCfg.split(/\r\n|\r|\n/)
     const convarValue = cfg.find(x => x.includes(`${convar}: `))
@@ -17,7 +17,7 @@ const getConvar = (convar: string, initialValue: string) => {
     return sanitizedConvar;
 }
 
-const getIntConvar = (convar: string, initialValue: number) => {
+const getIntConvar = (convar: string, initialValue: number): number => {
     const serverCfg = fs.readFileSync(path.join(alt.rootDir, 'server.cfg'), 'utf8')
     const cfg = serverCfg.split(/\r\n|\r|\n/)
     const convarValue = cfg.find(x => x.includes(`${convar}: `))
@@ -27,11 +27,11 @@ const getIntConvar = (convar: string, initialValue: number) => {
     if(convarValue.charAt(0) === '#'){
         return initialValue;
     }
-    const sanitizedConvar = convarValue.substring(convar.length + 3).slice(0, -1)
+    const sanitizedConvar = Number(convarValue.substring(convar.length + 3).slice(0, -1))
     return sanitizedConvar;
 }
 
-const parseSemiColons = (string: string) => {
+const parseSemiColons = (string: string): {} => {
     const parts = string.split(';');
     return parts.reduce((connectionInfo, parameter) => {
         const [key, value] = parameter.split('=');
@@ -40,7 +40,7 @@ const parseSemiColons = (string: string) => {
       }, {})
 }
 
-const queryType = (query) => {
+const queryType = (query: string): number | false => {
     switch (query.replace(/\s.*/, '')) {
       case 'SELECT':
         return 1;
