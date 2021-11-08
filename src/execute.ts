@@ -5,14 +5,14 @@ import { pool } from "./pool";
 //Executes a single query
 const executeQuery = async (query: string, parameters: unknown, resource: string): Promise<any> => {
     try {
-        const t0 = new Date().getTime(); 
+        const t0 = process.hrtime.bigint(); 
         [query, parameters] = parseParameters(query, parameters);
         const [ rows ] = await pool.query(query, parameters);
-        const t1 = new Date().getTime();
-        const executionTime = t1 - t0
+        const t1 = process.hrtime.bigint();
+        const executionTime = Number(t1 - t0) / 1000000
         if(executionTime >= slowQueryWarning || debug){
           console.log(
-            `['DEBUG'] ${resource} took ${executionTime}ms to execute a query!
+            `['DEBUG'] ${resource} took ${Math.round(executionTime)}ms to execute a query!
             ${query} ${JSON.stringify(parameters)}`
           );
         }
