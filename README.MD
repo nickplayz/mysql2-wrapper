@@ -4,7 +4,7 @@
 
 This library was converted by me to alt:V in order to enable an easy development enviroment using mySQL.
 
->This library is not supported by the original author. If you require support, feel free to ask me through the alt:V discord discord. 
+>This library is not supported by the original author. If you require support, feel free to ask me through the alt:V discord. 
 
 ## Features
 
