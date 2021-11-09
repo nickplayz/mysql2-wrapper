@@ -1,5 +1,5 @@
 {
-  "name": "altv-oxmysql",
+  "name": "mysql2-wrapper",
   "version": "1.0.0",
   "main": "index.js",
   "description": "node-mysql2 resource for alt:V",
@@ -7,8 +7,7 @@
   "license": "GPL-3.0-or-later",
   "dependencies": {
     "connection-string-parser": "^1.0.4",
-    "mysql2": "^2.3.2",
-    "named-placeholders": "^1.1.2"
+    "mysql2": "^2.3.2"
   },
   "scripts": {
     "build": "webpack"
