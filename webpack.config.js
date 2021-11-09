@@ -17,7 +17,7 @@ module.exports = {
             contextRegExp: /./,
         }),
         new CopyPlugin({
-            patterns: ["./standalone"],
+            patterns: ['./static'],
         }),
     ],
     module: {
