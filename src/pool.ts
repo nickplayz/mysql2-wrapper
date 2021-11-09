@@ -1,9 +1,8 @@
 import { createPool } from 'mysql2/promise';
-import { getConvar, parseSemiColons } from './utils';
+import { parseSemiColons } from './utils';
 import { ConnectionStringParser } from 'connection-string-parser';
 import { parseTypes } from './parser';
-
-const connectionString = getConvar('mysql_connection_string', '');
+import { connectionString } from './config';
 
 if (!connectionString) {
     throw new Error(`Set up mysql_connection_string in server.cfg`);
