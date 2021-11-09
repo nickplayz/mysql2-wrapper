@@ -1,7 +1,6 @@
 import { createPool } from 'mysql2/promise';
 import { parseSemiColons } from './utils';
 import { ConnectionStringParser } from 'connection-string-parser';
-import { parseTypes } from './parser';
 import { connectionString } from './config';
 
 if (!connectionString) {
@@ -21,7 +20,6 @@ const createConnection = () => {
             connectTimeout: 30000,
             ...options.options,
             namedPlaceholders: true,
-            typeCast: parseTypes,
         });
     }else{
         const options = new ConnectionStringParser({
@@ -42,7 +40,6 @@ const createConnection = () => {
             connectTimeout: 30000,
             ...options.options,
             namedPlaceholders: true,
-            typeCast: parseTypes,
         });
     }
 };
