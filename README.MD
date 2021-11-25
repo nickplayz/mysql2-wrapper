@@ -35,6 +35,18 @@ To import mysql2-wrapper to your alt:V resource just use
 import mysql from 'mysql2-wrapper' 
 ```
 
+## Wait until this wrapper is loaded
+
+You can use
+
+```sh
+alt.on('database:Ready', () => {
+    //Some function
+})
+```
+
+To wait until the wrapper is fully operational
+
 ## Placeholders
 
 This allows queries to be properly prepared and escaped, as well as improve query times for frequently accessed queries.

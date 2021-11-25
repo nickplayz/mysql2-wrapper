@@ -9,6 +9,7 @@ import altCallback from './interfaces/altCallback';
     try{
         await pool.getConnection();
         console.log(`Database server connection established!`);
+        alt.emit('database:Ready')
     }catch(e){
         console.log(`Unable to establish a connection to the database! [${e.code}]\n${e.message}`);
     }
@@ -66,7 +67,6 @@ const scalar = async (query: string, parameters: unknown, cb: altCallback, resou
     const result = await executeQuery(query, parameters, resource);
     safeCallback(cb || parameters, result && result[0] && Object.values(result[0])[0], resource, query);
 };
-
 
 export default { execute, insert, update, scalar };
 
