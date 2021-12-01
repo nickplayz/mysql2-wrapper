@@ -6,8 +6,7 @@
   "repository": "git@github.com:nickplayz/altv-oxmysql.git",
   "license": "GPL-3.0-or-later",
   "dependencies": {
-    "connection-string-parser": "^1.0.4",
-    "mysql2": "^2.3.2"
+    "mysql2": "^2.3.3"
   },
   "scripts": {
     "build": "webpack"
