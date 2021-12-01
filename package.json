@@ -1,9 +1,9 @@
 {
   "name": "mysql2-wrapper",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "main": "index.js",
   "description": "node-mysql2 resource for alt:V",
-  "repository": "git@github.com:nickplayz/altv-oxmysql.git",
+  "repository": "git@github.com:nickplayz/mysql2-wrapper.git",
   "license": "GPL-3.0-or-later",
   "dependencies": {
     "mysql2": "^2.3.3"
