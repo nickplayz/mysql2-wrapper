@@ -9,7 +9,7 @@ const createConnection = () => {
     const isURI = connectionString.includes('mysql://')
 
     if(isURI){
-        return createPool({uri: connectionString})
+        return createPool({uri: connectionString, namedPlaceholders: true})
     }
 
     const options: any = connectionString
